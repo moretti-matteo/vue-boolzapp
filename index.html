@@ -48,7 +48,7 @@
                 </div>
                 <div class="contacts">
                     <ul class="contact-list">
-                        <li class="contact-elem" v-for="(contact,i) in contacts">
+                        <li class="contact-elem" v-for="(contact,i) in contacts" @click="changeChat(i)">
                             <div class="contact-left">
                                 <div class="contact-img">
                                     <img :src="startUrlImg + contact.avatar + endUrlImg" alt="">
@@ -60,7 +60,7 @@
                             </div>
                             <div class="hour">12:56</div>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -68,10 +68,10 @@
                 <div class="header-col-right">
                     <div class="header-chat-left">
                         <div class="chat-contact-img">
-                            <img src="./img/avatar_1.jpg" alt="">
+                            <img :src="startUrlImg + contacts[currentUser].avatar + endUrlImg" alt="">
                         </div>
                         <div class="info-contact">
-                            <div class="contact-name">Michele</div>
+                            <div class="contact-name">{{contacts[currentUser].name}}</div>
                             <div class="last-access">Ultimo accesso oggi alle 12:00</div>
                         </div>
                     </div>
@@ -85,7 +85,15 @@
                 </div>
 
                 <div class="chat">
-                    <div class="row-msg msg-sent">
+                    <div v-for="(msg,i) in contacts[currentUser].messages" class="row-msg" :class="{'msg-sent' : msg.status === 'sent'}">
+                        <div class="msg" :class="msg.status === 'sent' ? 'sent' : 'reiceved'">
+                            <p>{{msg.message}}</p>
+                            <div class="hour">
+                                {{data(msg.date)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row-msg msg-sent">
                         <div class="msg sent">
                             <p>Hai portato a spasso il cane?</p>
                             <div class="hour">
@@ -108,7 +116,7 @@
                                 15:00
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="send-msg">

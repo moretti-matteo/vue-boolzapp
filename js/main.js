@@ -1,8 +1,9 @@
 const root = new Vue({
     el: '#root',
     data: {
-        startUrlImg:"./img/avatar",
-        endUrlImg:".jpg",
+        startUrlImg: "./img/avatar",
+        endUrlImg: ".jpg",
+        currentUser: 0,
         contacts: [
             {
                 name: 'Michele',
@@ -169,6 +170,11 @@ const root = new Vue({
 
     },
     methods: {
-
+        data(dataMsg) {
+            return dataMsg.split(" ")[1].slice(0,5);
+        },
+        changeChat(i){
+            this.currentUser = i;
+        }
     }
 });
