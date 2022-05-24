@@ -1,6 +1,8 @@
 const root = new Vue({
     el: '#root',
     data: {
+        startUrlImg:"./img/avatar",
+        endUrlImg:".jpg",
         contacts: [
             {
                 name: 'Michele',

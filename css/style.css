@@ -38,7 +38,6 @@ body {
 
 .container-left {
     width: 35%;
-    border: 1px solid magenta;
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -48,13 +47,12 @@ body {
     padding: 0 10px;
     justify-content: space-between;
     height: 50px;
-    border: 1px solid cyan;
     display: flex;
     align-items: center;
     background: var(--column-header);
 }
 
-.header-left{
+.header-left {
     display: flex;
     align-items: center;
 }
@@ -72,17 +70,245 @@ body {
     height: auto;
 }
 
-.header-right{
-    color:#b1b1b1;
+.header-right,
+.header-chat-right {
+    color: #b1b1b1;
 }
 
-.header-right > *{
+.header-right>* {
     margin: 0 5px;
 }
+
+.notifications {
+    background-color: var(--notifications);
+    display: flex;
+    padding: 15px;
+    align-items: center;
+}
+
+.desc-notifications {
+    margin-left: 10px;
+}
+
+.desc-notifications h4 {
+    font-size: 12px;
+}
+
+.desc-notifications a {
+    font-size: 11px;
+    color: #909090;
+
+}
+
+.bell-ico {
+    background: #fff;
+    color: var(--notifications);
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+
+}
+
+.bell-ico i {
+    line-height: 30px;
+}
+
+.search-bar {
+    display: flex;
+    padding: 5px;
+    background-color: #fafafa;
+}
+
+.search-bar button {
+    width: 15%;
+    border: 1px solid #f2f2f2;
+    background-color: #fff;
+    padding: 5px 0;
+    color: #b1b1b1;
+
+}
+
+.search-bar input[type="text"] {
+    width: 85%;
+    border: 1px solid #f2f2f2;
+    background-color: #fff;
+    padding: 5px 0;
+}
+
+.contacts {
+    overflow-y: auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.contact-elem {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.contact-elem:hover {
+    background-color: rgb(226, 226, 226);
+    cursor: pointer;
+}
+
+.contact-left {
+    display: flex;
+}
+
+.contact-img {
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+.contact-img>img {
+    width: 100%;
+    height: auto;
+}
+
+.info-contact {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.last-msg-sent,
+.hour,
+.last-access {
+    color: rgb(192, 192, 192);
+    font-size: 10px;
+}
+
 
 
 .container-right {
 
     width: 65%;
-    border: 1px solid greenyellow;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid greenyellow; */
+}
+
+.header-chat-left {
+    display: flex;
+}
+
+.chat-contact-img {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.chat-contact-img>img {
+    width: 100%;
+    height: auto;
+}
+
+.header-col-right {
+    justify-content: space-between;
+
+    height: 50px;
+    padding: 5px;
+    display: flex;
+    background-color: var(--column-header);
+}
+
+.header-col-right .info-contact {
+    align-self: center;
+    margin-left: 10px;
+}
+
+.header-chat-right {
+    align-self: center;
+}
+
+.header-chat-right i {
+    margin: 0 5px;
+}
+
+
+/* CHAT */
+.chat {
+    background-image: url("../img/mine.jpg");
+    height: 100%;
+    padding: 60px;
+    /* background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; */
+}
+
+.msg {
+    position: relative;
+    width: 250px;
+    padding: 15px 0 20px 10px;
+    border-radius: 5px;
+
+}
+
+.row-msg {
+    /* border: 1px solid; */
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+
+.msg-sent {
+    justify-content: flex-end;
+}
+
+.sent {
+    background-color: #d5f9ba;
+}
+
+.msg-reiceved{
+    background-color: white;
+}
+
+.msg .hour{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+
+
+
+.reiceved-msg {
+    background-color: #fff;
+}
+
+
+.send-msg {
+    text-align: center;
+    background-color: #f3eeea;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.footer-ico {
+    margin: 0 15px;
+    width: 5%;
+
+}
+
+.input-chat {
+    width: 100%;
+}
+
+.input-chat input {
+    width: 100%;
+}
+
+.input-chat input {
+    padding: 10px;
+    border: none;
 }

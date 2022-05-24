@@ -34,17 +34,94 @@
                     </div>
                 </div>
                 <div class="notifications">
-
+                    <div class="bell-ico">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="desc-notifications">
+                        <h4>Ricevi notifiche di nuovi messaggi</h4>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
                 </div>
                 <div class="search-bar">
-
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <div class="contacts">
-
+                    <ul class="contact-list">
+                        <li class="contact-elem" v-for="(contact,i) in contacts">
+                            <div class="contact-left">
+                                <div class="contact-img">
+                                    <img :src="startUrlImg + contact.avatar + endUrlImg" alt="">
+                                </div>
+                                <div class="info-contact">
+                                    <div class="contact-name">{{contact.name}}</div>
+                                    <div class="last-msg-sent">Ultimo messaggio </div>
+                                </div>
+                            </div>
+                            <div class="hour">12:56</div>
+                        </li>
+                        
+                    </ul>
                 </div>
             </div>
             <div class="container-right">
+                <div class="header-col-right">
+                    <div class="header-chat-left">
+                        <div class="chat-contact-img">
+                            <img src="./img/avatar_1.jpg" alt="">
+                        </div>
+                        <div class="info-contact">
+                            <div class="contact-name">Michele</div>
+                            <div class="last-access">Ultimo accesso oggi alle 12:00</div>
+                        </div>
+                    </div>
 
+                    <div class="header-chat-right">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                    </div>
+                </div>
+
+                <div class="chat">
+                    <div class="row-msg msg-sent">
+                        <div class="msg sent">
+                            <p>Hai portato a spasso il cane?</p>
+                            <div class="hour">
+                                15:00
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-msg msg-sent">
+                        <div class="msg sent">
+                            <p>Ricordati di stendere i panni</p>
+                            <div class="hour">
+                                15:00
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-msg">
+                        <div class="msg msg-reiceved">
+                            <p>Ricordati di stendere i panni</p>
+                            <div class="hour">
+                                15:00
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="send-msg">
+                    <div class="footer-ico">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    <div class="input-chat">
+                        <input type="text" placeholder="Scrivi un messaggio">
+                    </div>
+                    <div class="footer-ico">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
