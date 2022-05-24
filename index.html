@@ -44,23 +44,25 @@
                 </div>
                 <div class="search-bar">
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" @keyup="filterContacts()"
+                        v-model="search">
                 </div>
                 <div class="contacts">
                     <ul class="contact-list">
-                        <li class="contact-elem" v-for="(contact,i) in contacts" @click="changeChat(i)">
-                            <div class="contact-left">
-                                <div class="contact-img">
-                                    <img :src="startUrlImg + contact.avatar + endUrlImg" alt="">
+                        <li class="contact-elem" :class="{hidden : !contact.visible}" v-for="(contact,i) in contacts" @click="changeChat(i)">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div class="contact-left">
+                                    <div class="contact-img">
+                                        <img :src="startUrlImg + contact.avatar + endUrlImg" alt="">
+                                    </div>
+                                    <div class="info-contact">
+                                        <div class="contact-name">{{contact.name}}</div>
+                                        <div class="last-msg-sent">Ultimo messaggio</div>
+                                    </div>
                                 </div>
-                                <div class="info-contact">
-                                    <div class="contact-name">{{contact.name}}</div>
-                                    <div class="last-msg-sent">Ultimo messaggio </div>
-                                </div>
+                                <div class="hour">12:56</div>
                             </div>
-                            <div class="hour">12:56</div>
                         </li>
-
                     </ul>
                 </div>
             </div>
@@ -85,11 +87,12 @@
                 </div>
 
                 <div class="chat">
-                    <div v-for="(msg,i) in contacts[currentUser].messages" class="row-msg" :class="{'msg-sent' : msg.status === 'sent'}">
+                    <div v-for="(msg,i) in contacts[currentUser].messages" class="row-msg"
+                        :class="{'msg-sent' : msg.status === 'sent'}">
                         <div class="msg" :class="msg.status === 'sent' ? 'sent' : 'reiceved'">
                             <p>{{msg.message}}</p>
                             <div class="hour">
-                                {{data(msg.date)}}
+                                {{checkData(msg.date)}}
                             </div>
                         </div>
                     </div>
@@ -124,7 +127,7 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
                     <div class="input-chat">
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input type="text" placeholder="Scrivi un messaggio" @keyup.enter="sendMsg()" v-model="msg">
                     </div>
                     <div class="footer-ico">
                         <i class="fa-solid fa-microphone"></i>

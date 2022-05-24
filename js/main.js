@@ -4,6 +4,8 @@ const root = new Vue({
         startUrlImg: "./img/avatar",
         endUrlImg: ".jpg",
         currentUser: 0,
+        msg: "",
+        search: "",
         contacts: [
             {
                 name: 'Michele',
@@ -170,11 +172,39 @@ const root = new Vue({
 
     },
     methods: {
-        data(dataMsg) {
-            return dataMsg.split(" ")[1].slice(0,5);
+        checkData(dataMsg) {
+            return dataMsg.split(" ")[1].slice(0, 5);
         },
-        changeChat(i){
+        changeChat(i) {
             this.currentUser = i;
+        },
+        sendMsg() {
+            const data = new Date().toLocaleString();
+            console.log(data);
+            this.contacts[this.currentUser].messages.push({ date: data, message: this.msg, status: "sent" });
+            this.msg = "";
+            this.receiveMsg(data);
+        },
+        receiveMsg(data) {
+            setTimeout(() => {
+                this.contacts[this.currentUser].messages.push(
+                    {
+                        date: data,
+                        message: "Ok!",
+                        status: "received"
+                    }
+                )
+            }, 1000);
+        },
+        filterContacts() {
+            console.log(this.search);
+            for (contact in this.contacts) {
+                if (!this.contacts[contact].name.toLowerCase().startsWith(this.search.toLowerCase())) {
+                    this.contacts[contact].visible = false;
+                } else {
+                    this.contacts[contact].visible = true;
+                }
+            }
         }
     }
 });
