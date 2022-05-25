@@ -49,7 +49,8 @@
                 </div>
                 <div class="contacts">
                     <ul class="contact-list">
-                        <li class="contact-elem" :class="{hidden : !contact.visible}" v-for="(contact,i) in contacts" @click="changeChat(i)">
+                        <li class="contact-elem" :class="{hidden : !contact.visible}" v-for="(contact,i) in contacts"
+                            @click="changeChat(i)">
                             <div style="display: flex; justify-content: space-between;">
                                 <div class="contact-left">
                                     <div class="contact-img">
@@ -89,42 +90,27 @@
                 <div class="chat">
                     <div v-for="(msg,i) in contacts[currentUser].messages" class="row-msg"
                         :class="{'msg-sent' : msg.status === 'sent'}">
-                        <div class="msg" :class="msg.status === 'sent' ? 'sent' : 'reiceved'">
-                            <p>{{msg.message}}</p>
-                            <div class="hour">
-                                {{checkData(msg.date)}}
+                        <div class="box-message">
+                            <div class="modal" v-show="msg.modalActive">
+                                <button class="msgDelete" @click="deleteMsg(i)">Delete Message <i
+                                        class="fa-solid fa-trash-can"></i></button>
+                            </div>
+                            <div class="msg" :class="msg.status === 'sent' ? 'sent' : 'reiceved'" @click="showModal(i)">
+                                <p>{{msg.message}}</p>
+                                <div class="hour">
+                                    {{checkData(msg.date)}}
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row-msg msg-sent">
-                        <div class="msg sent">
-                            <p>Hai portato a spasso il cane?</p>
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-msg msg-sent">
-                        <div class="msg sent">
-                            <p>Ricordati di stendere i panni</p>
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row-msg">
-                        <div class="msg msg-reiceved">
-                            <p>Ricordati di stendere i panni</p>
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
 
                 <div class="send-msg">
                     <div class="footer-ico">
-                        <i class="fa-regular fa-face-smile"></i>
+                        <div v-show="emoji" class="emoji-container">
+                            😂😀😁🤣😃😄😅😆😉😋😎
+                        </div>
+                        <i class="fa-regular fa-face-smile" @click="showEmoji()"></i>
                     </div>
                     <div class="input-chat">
                         <input type="text" placeholder="Scrivi un messaggio" @keyup.enter="sendMsg()" v-model="msg">

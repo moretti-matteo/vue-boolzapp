@@ -301,7 +301,25 @@ ul {
 .footer-ico {
     margin: 0 15px;
     width: 5%;
+    position: relative;
+}
 
+.footer-ico i:hover{
+    cursor: pointer;
+    color:darkorange;
+}
+
+
+
+.emoji-container{
+    left:-10px;
+    top:-150px;
+    width: 150px;
+    height: 125px;
+    background: #333;
+    position:absolute;
+    display: flex;
+    flex-direction: row;
 }
 
 .input-chat {
@@ -315,4 +333,37 @@ ul {
 .input-chat input {
     padding: 10px;
     border: none;
+}
+.box-message{
+    position: relative;
+}
+
+.modal{
+    background-color: white;
+    top:-10px;
+    left:20px;
+    z-index: 10;
+    position: absolute;
+    box-shadow: 3px 4px 8px 2px #9b9b9b;
+    border:1px solid  grey;
+}
+
+.visible{
+    display: flex;
+    align-items: center;
+
+    
+}
+
+.msgDelete{
+    width: 100%;
+    padding: 5px 5px;
+    display: block;
+    background: none;
+    border:none;
+}
+
+.msgDelete:hover{
+    color:rgb(203, 0, 0);
+    cursor: pointer;
 }
