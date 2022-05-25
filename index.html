@@ -31,6 +31,7 @@
                         <i class="fa-solid fa-circle-notch"></i>
                         <i class="fa-solid fa-message"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
+
                     </div>
                 </div>
                 <div class="notifications">
@@ -54,11 +55,13 @@
                             <div style="display: flex; justify-content: space-between;">
                                 <div class="contact-left">
                                     <div class="contact-img">
-                                        <img :src="startUrlImg + contact.avatar + endUrlImg" alt="">
+                                        <img :src="`./img/avatar${contact.avatar}.jpg`" alt="">
                                     </div>
                                     <div class="info-contact">
                                         <div class="contact-name">{{contact.name}}</div>
-                                        <div class="last-msg-sent">Ultimo messaggio</div>
+                                        <div class="last-msg-sent">
+                                            {{checkLastMsg(contact.messages)}}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="hour">12:56</div>
@@ -71,7 +74,8 @@
                 <div class="header-col-right">
                     <div class="header-chat-left">
                         <div class="chat-contact-img">
-                            <img :src="startUrlImg + contacts[currentUser].avatar + endUrlImg" alt="">
+                            <img :src="`./img/avatar${contacts[currentUser].avatar}.jpg`" alt="">
+
                         </div>
                         <div class="info-contact">
                             <div class="contact-name">{{contacts[currentUser].name}}</div>
@@ -92,6 +96,7 @@
                         :class="{'msg-sent' : msg.status === 'sent'}">
                         <div class="box-message">
                             <div class="modal" v-show="msg.modalActive">
+                                <button class="msgInfo">Info Message <i class="fa-solid fa-circle-info"></i></button>
                                 <button class="msgDelete" @click="deleteMsg(i)">Delete Message <i
                                         class="fa-solid fa-trash-can"></i></button>
                             </div>
@@ -108,7 +113,10 @@
                 <div class="send-msg">
                     <div class="footer-ico">
                         <div v-show="emoji" class="emoji-container">
-                            😂😀😁🤣😃😄😅😆😉😋😎
+                            <div>😂</div>
+                            <div>😀</div>
+                            <div>😁</div>
+                            <div>😎</div>
                         </div>
                         <i class="fa-regular fa-face-smile" @click="showEmoji()"></i>
                     </div>
@@ -122,8 +130,6 @@
             </div>
         </div>
     </div>
-
-
 
     <script src='https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'></script>
     <script src="js/main.js"></script>

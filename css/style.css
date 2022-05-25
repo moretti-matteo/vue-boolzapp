@@ -22,7 +22,7 @@ body {
     background: linear-gradient(to bottom, var(--bg-green) 20%, var(--bg-lightgray) 20%);
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
@@ -270,11 +270,11 @@ ul {
     background-color: #d5f9ba;
 }
 
-.reiceved{
+.reiceved {
     background-color: white;
 }
 
-.msg .hour{
+.msg .hour {
     position: absolute;
     right: 5px;
     bottom: 5px;
@@ -304,20 +304,20 @@ ul {
     position: relative;
 }
 
-.footer-ico i:hover{
+.footer-ico i:hover {
     cursor: pointer;
-    color:darkorange;
+    color: darkorange;
 }
 
 
 
-.emoji-container{
-    left:-10px;
-    top:-150px;
+.emoji-container {
+    left: -10px;
+    top: -150px;
     width: 150px;
     height: 125px;
     background: #333;
-    position:absolute;
+    position: absolute;
     display: flex;
     flex-direction: row;
 }
@@ -334,36 +334,41 @@ ul {
     padding: 10px;
     border: none;
 }
-.box-message{
+
+.box-message {
     position: relative;
 }
 
-.modal{
+.modal {
     background-color: white;
-    top:-10px;
-    left:20px;
+    top: -90%;
+    left: 25px;
     z-index: 10;
     position: absolute;
     box-shadow: 3px 4px 8px 2px #9b9b9b;
-    border:1px solid  grey;
+    border: 1px solid grey;
 }
 
-.visible{
+.visible {
     display: flex;
     align-items: center;
-
-    
 }
 
-.msgDelete{
+.msgInfo:hover {
+    color:blue;
+    cursor:pointer;
+}
+
+.msgDelete,
+.msgInfo {
     width: 100%;
     padding: 5px 5px;
     display: block;
     background: none;
-    border:none;
+    border: 1px solid lightgray;
 }
 
-.msgDelete:hover{
-    color:rgb(203, 0, 0);
+.msgDelete:hover {
+    color: rgb(203, 0, 0);
     cursor: pointer;
 }

@@ -202,11 +202,14 @@ const root = new Vue({
             this.currentUser = i;
         },
         sendMsg() {
-            const data = new Date().toLocaleString();
-            console.log(data);
-            this.contacts[this.currentUser].messages.push({ date: data, message: this.msg, status: "sent", modalActive: false });
-            this.msg = "";
-            this.receiveMsg(data);
+
+            if (this.msg.trim()) {
+                const data = new Date().toLocaleString();
+                console.log(data);
+                this.contacts[this.currentUser].messages.push({ date: data, message: this.msg, status: "sent", modalActive: false });
+                this.msg = "";
+                this.receiveMsg(data);
+            }
         },
         receiveMsg(data) {
             setTimeout(() => {
@@ -223,7 +226,7 @@ const root = new Vue({
         filterContacts() {
             console.log(this.search);
             for (contact in this.contacts) {
-                if (!this.contacts[contact].name.toLowerCase().startsWith(this.search.toLowerCase())) {
+                if (!this.contacts[contact].name.toLowerCase().includes(this.search.toLowerCase())) {
                     this.contacts[contact].visible = false;
                 } else {
                     this.contacts[contact].visible = true;
@@ -245,6 +248,25 @@ const root = new Vue({
         },
         showEmoji() {
             this.emoji = !this.emoji;
-        }
+        },
+        checkLastMsg(messages) {
+            return messages.length > 0 ? messages[messages.length - 1].message : "Nessun messaggio";
+        },
+        // insertEmoji(num) {
+        //     switch (num) {
+        //         case 1:
+        //             this.msg += "😂";
+        //             break;
+        //         case 2:
+        //             this.msg += "😀";
+        //             break;
+        //         case 3:
+        //             this.msg += "😁";
+        //             break;
+        //         case 4:
+        //             this.msg += "😎";
+        //             break;
+        //     }
+        // },
     }
 });
