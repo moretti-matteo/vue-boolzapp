@@ -92,6 +92,9 @@
                 </div>
 
                 <div class="chat">
+                    <div v-if="contacts[currentUser].messages.length === 0" class="no-message">
+                        <h4>Nessun Messaggio</h4>
+                    </div>
                     <div v-for="(msg,i) in contacts[currentUser].messages" class="row-msg"
                         :class="{'msg-sent' : msg.status === 'sent'}">
                         <div class="box-message">
